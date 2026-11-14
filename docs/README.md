@@ -4,7 +4,7 @@
 
 Cloud Sol RPC 是基于 SolanaJ 包结构扩展的 Java 17 Solana 客户端库，提供 JSON-RPC 调用、WebSocket 订阅、交易构造与签名、DEX 账户解析，以及自定义链上交易 Router 的指令构造功能。
 
-本项目打包产物为 JAR 库，不是独立运行的 RPC 服务端。当前 Maven 坐标为 `com.duonian:solanaj-jdk17:1.7.9`，Java 包名保留为 `org.p2p.solanaj`。
+本项目打包产物为 JAR 库，不是独立运行的 RPC 服务端。当前 Maven 坐标为 `io.github.masrt-wu:solanaj-17:1.0.0`，Java 包名保留为 `org.p2p.solanaj`。
 
 ## 主要功能
 
@@ -30,7 +30,7 @@ mvn -version
 在项目根目录构建，并安装到本地 Maven 仓库：
 
 ```shell
-mvn -Dmaven.test.skip=true install
+mvn "-Dmaven.test.skip=true" install
 ```
 
 该命令跳过测试编译和执行。测试目录包含实网 RPC 和交易示例，运行前应检查具体测试类。普通本地构建不需要配置 GPG；签名配置位于 `deploy` profile 中。
@@ -39,13 +39,17 @@ mvn -Dmaven.test.skip=true install
 
 ```xml
 <dependency>
-    <groupId>com.duonian</groupId>
-    <artifactId>solanaj-jdk17</artifactId>
-    <version>1.7.9</version>
+    <groupId>io.github.masrt-wu</groupId>
+    <artifactId>solanaj-17</artifactId>
+    <version>1.0.0</version>
 </dependency>
 ```
 
 以上坐标以当前仓库的 [pom.xml](../pom.xml) 为准。版本变更后应同步调整依赖；此处采用本地安装方式，不假定该版本已发布到公共 Maven 仓库。
+
+## 发布到 Maven Central
+
+发布坐标为 `io.github.masrt-wu:solanaj-17:1.0.0`。详见 [Maven Central 发布指南](MAVEN_CENTRAL.md)：包含命名空间验证、GPG 签名、本地打包与上传步骤。PowerShell 脚本只从被忽略的 `.env` 加载发布配置，默认不上传，正式发布仍需在 Central 网页确认。
 
 ## 本地配置与私钥
 
@@ -431,7 +435,7 @@ docs/                   中文说明、事件文档与许可证
 仅编译主代码，不运行示例：
 
 ```shell
-mvn -Dmaven.test.skip=true compile
+mvn "-Dmaven.test.skip=true" compile
 ```
 
 选择指定的离线回归测试执行；在 PowerShell 中，用引号包裹包含逗号的参数：

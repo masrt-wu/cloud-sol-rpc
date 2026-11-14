@@ -4,7 +4,7 @@ English | [简体中文](docs/README.md)
 
 Cloud Sol RPC is a Java 17 Solana client library built on the SolanaJ package structure. It provides JSON-RPC access, WebSocket subscriptions, transaction construction and signing, DEX account decoding, and instructions for a custom on-chain trade router.
 
-This repository builds a JAR library, rather than a standalone RPC server. Its Maven coordinates are `com.duonian:solanaj-jdk17:1.7.9`; Java packages remain under `org.p2p.solanaj`.
+This repository builds a JAR library, rather than a standalone RPC server. Its Maven coordinates are `io.github.masrt-wu:solanaj-17:1.0.0`; Java packages remain under `org.p2p.solanaj`.
 
 ## Features
 
@@ -30,7 +30,7 @@ mvn -version
 Build and install the current checkout into your local Maven repository:
 
 ```shell
-mvn -Dmaven.test.skip=true install
+mvn "-Dmaven.test.skip=true" install
 ```
 
 This command skips test compilation and execution. The test tree includes live RPC and transaction examples; review individual classes before running them. Normal local builds do not require GPG configuration; signing is configured in the `deploy` profile.
@@ -39,13 +39,17 @@ Add the following dependency to the consuming project's `pom.xml` after local in
 
 ```xml
 <dependency>
-    <groupId>com.duonian</groupId>
-    <artifactId>solanaj-jdk17</artifactId>
-    <version>1.7.9</version>
+    <groupId>io.github.masrt-wu</groupId>
+    <artifactId>solanaj-17</artifactId>
+    <version>1.0.0</version>
 </dependency>
 ```
 
 These coordinates come from this checkout's [pom.xml](pom.xml). If its version changes, update your dependency accordingly. Local installation is sufficient for the example above; availability in a public Maven repository is not assumed.
+
+## Publishing to Maven Central
+
+The release coordinates are `io.github.masrt-wu:solanaj-17:1.0.0`. See the [publishing guide](docs/MAVEN_CENTRAL.md) for namespace verification, GPG signing, local bundle generation and upload. The PowerShell helper loads only publishing credentials from the ignored `.env`; its default mode does not upload, and Central publication remains manual.
 
 ## Local configuration and private keys
 
@@ -431,7 +435,7 @@ docs/                   Chinese README, event guide, and license
 Compile production code without running examples:
 
 ```shell
-mvn -Dmaven.test.skip=true compile
+mvn "-Dmaven.test.skip=true" compile
 ```
 
 Run selected offline regression classes, with the comma-separated selector quoted for PowerShell:

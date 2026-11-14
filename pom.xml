@@ -1,12 +1,37 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.duonian</groupId>
-    <artifactId>solanaj-jdk17</artifactId>
+    <groupId>io.github.masrt-wu</groupId>
+    <artifactId>solanaj-17</artifactId>
     <packaging>jar</packaging>
-    <version>1.7.9</version>
+    <version>1.0.0</version>
+
+    <name>SolanaJ 17</name>
+    <description>Java 17 Solana client with RPC, WebSocket subscriptions, DEX account parsers and trade router builders.</description>
+    <url>https://github.com/masrt-wu/cloud-sol-rpc</url>
+    <licenses>
+        <license>
+            <name>MIT License</name>
+            <url>https://opensource.org/license/mit/</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+    <developers>
+        <developer>
+            <id>masrt-wu</id>
+            <name>masrt-wu</name>
+            <url>https://github.com/masrt-wu</url>
+        </developer>
+    </developers>
+    <scm>
+        <connection>scm:git:https://github.com/masrt-wu/cloud-sol-rpc.git</connection>
+        <developerConnection>scm:git:ssh://git@github.com/masrt-wu/cloud-sol-rpc.git</developerConnection>
+        <url>https://github.com/masrt-wu/cloud-sol-rpc</url>
+        <tag>HEAD</tag>
+    </scm>
     <properties>
         <java.version>17</java.version>
+        <central.skipUpload>true</central.skipUpload>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
@@ -122,30 +147,9 @@
     </dependencies>
 
 
-    <distributionManagement>
-        <snapshotRepository>
-            <id>ossrh</id>
-            <url>https://s01.oss.sonatype.org/content/repositories/snapshots</url>
-        </snapshotRepository>
-        <repository>
-            <id>ossrh</id>
-            <url>https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/</url>
-        </repository>
-    </distributionManagement>
 
     <build>
         <plugins>
-            <plugin>
-                <groupId>org.sonatype.plugins</groupId>
-                <artifactId>nexus-staging-maven-plugin</artifactId>
-                <version>1.7.0</version>
-                <extensions>true</extensions>
-                <configuration>
-                    <serverId>ossrh</serverId>
-                    <nexusUrl>https://s01.oss.sonatype.org/</nexusUrl>
-                    <autoReleaseAfterClose>true</autoReleaseAfterClose>
-                </configuration>
-            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-source-plugin</artifactId>
@@ -174,7 +178,7 @@
                 <configuration>
                     <source>17</source>
                     <doclint>none</doclint>
-                    <failOnError>false</failOnError>
+                    <failOnError>true</failOnError>
                 </configuration>
             </plugin>
             <plugin>
@@ -194,8 +198,24 @@
             <build>
                 <plugins>
                     <plugin>
+                        <groupId>org.sonatype.central</groupId>
+                        <artifactId>central-publishing-maven-plugin</artifactId>
+                        <version>0.12.0</version>
+                        <extensions>true</extensions>
+                        <configuration>
+                            <publishingServerId>central</publishingServerId>
+                            <autoPublish>false</autoPublish>
+                            <skipUpload>${central.skipUpload}</skipUpload>
+                            <waitUntil>validated</waitUntil>
+                        </configuration>
+                    </plugin>
+                    <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-gpg-plugin</artifactId>
+                        <version>3.2.8</version>
+                        <configuration>
+                            <bestPractices>true</bestPractices>
+                        </configuration>
                         <executions>
                             <execution>
                                 <id>sign-artifacts</id>
@@ -203,10 +223,6 @@
                                 <goals>
                                     <goal>sign</goal>
                                 </goals>
-                                <configuration>
-                                    <homedir>c:/Users/Michael/.gnupg/</homedir>
-                                    <keyname>0x27FAE7D2</keyname>
-                                </configuration>
                             </execution>
                         </executions>
                     </plugin>
