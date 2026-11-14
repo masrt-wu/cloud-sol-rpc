@@ -1,0 +1,48 @@
+{
+  "protocol": "raydium-launchlab",
+  "programId": "LanMV9sAd7wArD4vJFi2qDdfnVhFxYSUg6eADduJ3uj",
+  "source": "本仓库 LaunchLabPoolStateParser 的 429 字节 PoolState 布局",
+  "snapshotDate": "2026-09-30",
+  "accounts": [
+    {"name": "PoolState", "anchorName": "PoolState"}
+  ],
+  "types": [
+    {"name": "PoolState", "type": {"kind": "struct", "fields": [
+      {"name": "epoch", "type": "u64"},
+      {"name": "auth_bump", "type": "u8"},
+      {"name": "status", "type": "u8"},
+      {"name": "base_decimals", "type": "u8"},
+      {"name": "quote_decimals", "type": "u8"},
+      {"name": "migrate_type", "type": "u8"},
+      {"name": "supply", "type": "u64"},
+      {"name": "total_base_sell", "type": "u64"},
+      {"name": "virtual_base", "type": "u64"},
+      {"name": "virtual_quote", "type": "u64"},
+      {"name": "real_base", "type": "u64"},
+      {"name": "real_quote", "type": "u64"},
+      {"name": "total_quote_fund_raising", "type": "u64"},
+      {"name": "quote_protocol_fee", "type": "u64"},
+      {"name": "platform_fee", "type": "u64"},
+      {"name": "migrate_fee", "type": "u64"},
+      {"name": "vesting_schedule", "type": {"defined": "VestingSchedule"}},
+      {"name": "global_config", "type": "pubkey"},
+      {"name": "platform_config", "type": "pubkey"},
+      {"name": "base_mint", "type": "pubkey"},
+      {"name": "quote_mint", "type": "pubkey"},
+      {"name": "base_vault", "type": "pubkey"},
+      {"name": "quote_vault", "type": "pubkey"},
+      {"name": "creator", "type": "pubkey"},
+      {"name": "token_program_flag", "type": "u8"},
+      {"name": "amm_creator_fee_on", "type": "u8"},
+      {"name": "platform_vesting_share", "type": "u64"},
+      {"name": "padding", "type": {"array": ["u8", 54]}}
+    ]}},
+    {"name": "VestingSchedule", "type": {"kind": "struct", "fields": [
+      {"name": "total_locked_amount", "type": "u64"},
+      {"name": "cliff_period", "type": "u64"},
+      {"name": "unlock_period", "type": "u64"},
+      {"name": "start_time", "type": "u64"},
+      {"name": "allocated_share_amount", "type": "u64"}
+    ]}}
+  ]
+}

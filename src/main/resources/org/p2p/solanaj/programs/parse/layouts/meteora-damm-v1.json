@@ -1,0 +1,398 @@
+{
+  "protocol": "meteora-damm-v1",
+  "programId": "Eo7WjKq67rjJQSZxS6z3YkapzY3eMj6Xy8X5EQVn5UaB",
+  "source": "https://raw.githubusercontent.com/MeteoraAg/damm-v1-sdk/main/ts-client/src/amm/idl.ts",
+  "snapshotDate": "2026-09-29",
+  "accounts": [
+    {
+      "name": "pool",
+      "anchorName": "Pool"
+    },
+    {
+      "name": "config",
+      "anchorName": "Config"
+    }
+  ],
+  "types": [
+    {
+      "name": "pool",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "lpMint",
+            "type": "publicKey"
+          },
+          {
+            "name": "tokenAMint",
+            "type": "publicKey"
+          },
+          {
+            "name": "tokenBMint",
+            "type": "publicKey"
+          },
+          {
+            "name": "aVault",
+            "type": "publicKey"
+          },
+          {
+            "name": "bVault",
+            "type": "publicKey"
+          },
+          {
+            "name": "aVaultLp",
+            "type": "publicKey"
+          },
+          {
+            "name": "bVaultLp",
+            "type": "publicKey"
+          },
+          {
+            "name": "aVaultLpBump",
+            "type": "u8"
+          },
+          {
+            "name": "enabled",
+            "type": "bool"
+          },
+          {
+            "name": "protocolTokenAFee",
+            "type": "publicKey"
+          },
+          {
+            "name": "protocolTokenBFee",
+            "type": "publicKey"
+          },
+          {
+            "name": "feeLastUpdatedAt",
+            "type": "u64"
+          },
+          {
+            "name": "padding0",
+            "type": {
+              "array": [
+                "u8",
+                24
+              ]
+            }
+          },
+          {
+            "name": "fees",
+            "type": {
+              "defined": "PoolFees"
+            }
+          },
+          {
+            "name": "poolType",
+            "type": {
+              "defined": "PoolType"
+            }
+          },
+          {
+            "name": "stake",
+            "type": "publicKey"
+          },
+          {
+            "name": "totalLockedLp",
+            "type": "u64"
+          },
+          {
+            "name": "bootstrapping",
+            "type": {
+              "defined": "Bootstrapping"
+            }
+          },
+          {
+            "name": "partnerInfo",
+            "type": {
+              "defined": "PartnerInfo"
+            }
+          },
+          {
+            "name": "padding",
+            "type": {
+              "defined": "Padding"
+            }
+          },
+          {
+            "name": "curveType",
+            "type": {
+              "defined": "CurveType"
+            }
+          },
+          {
+            "name": "padding1",
+            "type": {
+              "array": [
+                "u8",
+                19
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "PoolFees",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "tradeFeeNumerator",
+            "type": "u64"
+          },
+          {
+            "name": "tradeFeeDenominator",
+            "type": "u64"
+          },
+          {
+            "name": "protocolTradeFeeNumerator",
+            "type": "u64"
+          },
+          {
+            "name": "protocolTradeFeeDenominator",
+            "type": "u64"
+          }
+        ]
+      }
+    },
+    {
+      "name": "PoolType",
+      "type": {
+        "kind": "enum",
+        "variants": [
+          {
+            "name": "Permissioned"
+          },
+          {
+            "name": "Permissionless"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Bootstrapping",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "activationPoint",
+            "type": "u64"
+          },
+          {
+            "name": "whitelistedVault",
+            "type": "publicKey"
+          },
+          {
+            "name": "poolCreator",
+            "type": "publicKey"
+          },
+          {
+            "name": "activationType",
+            "type": "u8"
+          }
+        ]
+      }
+    },
+    {
+      "name": "PartnerInfo",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "feeNumerator",
+            "type": "u64"
+          },
+          {
+            "name": "partnerAuthority",
+            "type": "publicKey"
+          },
+          {
+            "name": "pendingFeeA",
+            "type": "u64"
+          },
+          {
+            "name": "pendingFeeB",
+            "type": "u64"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Padding",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "padding0",
+            "type": {
+              "array": [
+                "u8",
+                6
+              ]
+            }
+          },
+          {
+            "name": "padding1",
+            "type": {
+              "array": [
+                "u64",
+                21
+              ]
+            }
+          },
+          {
+            "name": "padding2",
+            "type": {
+              "array": [
+                "u64",
+                21
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "CurveType",
+      "type": {
+        "kind": "enum",
+        "variants": [
+          {
+            "name": "ConstantProduct"
+          },
+          {
+            "name": "Stable",
+            "fields": [
+              {
+                "name": "amp",
+                "type": "u64"
+              },
+              {
+                "name": "token_multiplier",
+                "type": {
+                  "defined": "TokenMultiplier"
+                }
+              },
+              {
+                "name": "depeg",
+                "type": {
+                  "defined": "Depeg"
+                }
+              },
+              {
+                "name": "last_amp_updated_timestamp",
+                "type": "u64"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "TokenMultiplier",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "tokenAMultiplier",
+            "type": "u64"
+          },
+          {
+            "name": "tokenBMultiplier",
+            "type": "u64"
+          },
+          {
+            "name": "precisionFactor",
+            "type": "u8"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Depeg",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "baseVirtualPrice",
+            "type": "u64"
+          },
+          {
+            "name": "baseCacheUpdated",
+            "type": "u64"
+          },
+          {
+            "name": "depegType",
+            "type": {
+              "defined": "DepegType"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "DepegType",
+      "type": {
+        "kind": "enum",
+        "variants": [
+          {
+            "name": "None"
+          },
+          {
+            "name": "Marinade"
+          },
+          {
+            "name": "Lido"
+          },
+          {
+            "name": "SplStake"
+          }
+        ]
+      }
+    },
+    {
+      "name": "config",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "poolFees",
+            "type": {
+              "defined": "PoolFees"
+            }
+          },
+          {
+            "name": "activationDuration",
+            "type": "u64"
+          },
+          {
+            "name": "vaultConfigKey",
+            "type": "publicKey"
+          },
+          {
+            "name": "poolCreatorAuthority",
+            "type": "publicKey"
+          },
+          {
+            "name": "activationType",
+            "type": "u8"
+          },
+          {
+            "name": "partnerFeeNumerator",
+            "type": "u64"
+          },
+          {
+            "name": "padding",
+            "type": {
+              "array": [
+                "u8",
+                219
+              ]
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

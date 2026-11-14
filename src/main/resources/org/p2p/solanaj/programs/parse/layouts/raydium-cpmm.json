@@ -1,0 +1,305 @@
+{
+  "protocol": "raydium-cpmm",
+  "programId": "CPMMoo8L3F4NbTegBCKVNunggL7H1ZpdTHKxQB5qKP1C",
+  "source": "https://raw.githubusercontent.com/raydium-io/raydium-idl/master/raydium_cpmm/raydium_cp_swap.json",
+  "snapshotDate": "2026-09-29",
+  "accounts": [
+    {
+      "name": "PoolState",
+      "anchorName": "PoolState",
+      "discriminator": [
+        247,
+        237,
+        227,
+        245,
+        215,
+        195,
+        222,
+        70
+      ]
+    },
+    {
+      "name": "AmmConfig",
+      "anchorName": "AmmConfig",
+      "discriminator": [
+        218,
+        244,
+        33,
+        104,
+        203,
+        203,
+        43,
+        111
+      ]
+    },
+    {
+      "name": "ObservationState",
+      "anchorName": "ObservationState",
+      "discriminator": [
+        122,
+        174,
+        197,
+        53,
+        129,
+        9,
+        165,
+        132
+      ]
+    }
+  ],
+  "types": [
+    {
+      "name": "PoolState",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "amm_config",
+            "type": "pubkey"
+          },
+          {
+            "name": "pool_creator",
+            "type": "pubkey"
+          },
+          {
+            "name": "token_0_vault",
+            "type": "pubkey"
+          },
+          {
+            "name": "token_1_vault",
+            "type": "pubkey"
+          },
+          {
+            "name": "lp_mint",
+            "type": "pubkey"
+          },
+          {
+            "name": "token_0_mint",
+            "type": "pubkey"
+          },
+          {
+            "name": "token_1_mint",
+            "type": "pubkey"
+          },
+          {
+            "name": "token_0_program",
+            "type": "pubkey"
+          },
+          {
+            "name": "token_1_program",
+            "type": "pubkey"
+          },
+          {
+            "name": "observation_key",
+            "type": "pubkey"
+          },
+          {
+            "name": "auth_bump",
+            "type": "u8"
+          },
+          {
+            "name": "status",
+            "type": "u8"
+          },
+          {
+            "name": "lp_mint_decimals",
+            "type": "u8"
+          },
+          {
+            "name": "mint_0_decimals",
+            "type": "u8"
+          },
+          {
+            "name": "mint_1_decimals",
+            "type": "u8"
+          },
+          {
+            "name": "lp_supply",
+            "type": "u64"
+          },
+          {
+            "name": "protocol_fees_token_0",
+            "type": "u64"
+          },
+          {
+            "name": "protocol_fees_token_1",
+            "type": "u64"
+          },
+          {
+            "name": "fund_fees_token_0",
+            "type": "u64"
+          },
+          {
+            "name": "fund_fees_token_1",
+            "type": "u64"
+          },
+          {
+            "name": "open_time",
+            "type": "u64"
+          },
+          {
+            "name": "recent_epoch",
+            "type": "u64"
+          },
+          {
+            "name": "creator_fee_on",
+            "type": "u8"
+          },
+          {
+            "name": "enable_creator_fee",
+            "type": "bool"
+          },
+          {
+            "name": "padding1",
+            "type": {
+              "array": [
+                "u8",
+                6
+              ]
+            }
+          },
+          {
+            "name": "creator_fees_token_0",
+            "type": "u64"
+          },
+          {
+            "name": "creator_fees_token_1",
+            "type": "u64"
+          },
+          {
+            "name": "padding",
+            "type": {
+              "array": [
+                "u64",
+                28
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "AmmConfig",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "bump",
+            "type": "u8"
+          },
+          {
+            "name": "disable_create_pool",
+            "type": "bool"
+          },
+          {
+            "name": "index",
+            "type": "u16"
+          },
+          {
+            "name": "trade_fee_rate",
+            "type": "u64"
+          },
+          {
+            "name": "protocol_fee_rate",
+            "type": "u64"
+          },
+          {
+            "name": "fund_fee_rate",
+            "type": "u64"
+          },
+          {
+            "name": "create_pool_fee",
+            "type": "u64"
+          },
+          {
+            "name": "protocol_owner",
+            "type": "pubkey"
+          },
+          {
+            "name": "fund_owner",
+            "type": "pubkey"
+          },
+          {
+            "name": "creator_fee_rate",
+            "type": "u64"
+          },
+          {
+            "name": "padding",
+            "type": {
+              "array": [
+                "u64",
+                15
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "ObservationState",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "initialized",
+            "type": "bool"
+          },
+          {
+            "name": "observation_index",
+            "type": "u16"
+          },
+          {
+            "name": "pool_id",
+            "type": "pubkey"
+          },
+          {
+            "name": "observations",
+            "type": {
+              "array": [
+                {
+                  "defined": {
+                    "name": "Observation"
+                  }
+                },
+                100
+              ]
+            }
+          },
+          {
+            "name": "last_update_timestamp",
+            "type": "u64"
+          },
+          {
+            "name": "padding",
+            "type": {
+              "array": [
+                "u64",
+                3
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "Observation",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "block_timestamp",
+            "type": "u64"
+          },
+          {
+            "name": "cumulative_token_0_price_x32",
+            "type": "u128"
+          },
+          {
+            "name": "cumulative_token_1_price_x32",
+            "type": "u128"
+          }
+        ]
+      }
+    }
+  ]
+}

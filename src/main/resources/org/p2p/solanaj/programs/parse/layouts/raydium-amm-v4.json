@@ -1,0 +1,436 @@
+{
+  "protocol": "raydium-amm-v4",
+  "programId": "675kPX9MHTjS2zt1qfr1NYHuzeLXfQM9H24wFSUt1Mp8",
+  "source": "https://github.com/raydium-io/raydium-sdk-v1/blob/master/src/liquidity/layout.ts",
+  "snapshotDate": "2026-09-29",
+  "accounts": [
+    {
+      "name": "AmmInfo",
+      "anchorName": "AmmInfo",
+      "discriminator": []
+    },
+    {
+      "name": "OpenOrders",
+      "anchorName": "OpenOrders",
+      "discriminator": []
+    },
+    {
+      "name": "MarketState",
+      "anchorName": "MarketState",
+      "discriminator": []
+    }
+  ],
+  "types": [
+    {
+      "name": "AmmInfo",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "status",
+            "type": "u64"
+          },
+          {
+            "name": "nonce",
+            "type": "u64"
+          },
+          {
+            "name": "max_order",
+            "type": "u64"
+          },
+          {
+            "name": "depth",
+            "type": "u64"
+          },
+          {
+            "name": "base_decimal",
+            "type": "u64"
+          },
+          {
+            "name": "quote_decimal",
+            "type": "u64"
+          },
+          {
+            "name": "state",
+            "type": "u64"
+          },
+          {
+            "name": "reset_flag",
+            "type": "u64"
+          },
+          {
+            "name": "min_size",
+            "type": "u64"
+          },
+          {
+            "name": "vol_max_cut_ratio",
+            "type": "u64"
+          },
+          {
+            "name": "amount_wave_ratio",
+            "type": "u64"
+          },
+          {
+            "name": "base_lot_size",
+            "type": "u64"
+          },
+          {
+            "name": "quote_lot_size",
+            "type": "u64"
+          },
+          {
+            "name": "min_price_multiplier",
+            "type": "u64"
+          },
+          {
+            "name": "max_price_multiplier",
+            "type": "u64"
+          },
+          {
+            "name": "system_decimal_value",
+            "type": "u64"
+          },
+          {
+            "name": "min_separate_numerator",
+            "type": "u64"
+          },
+          {
+            "name": "min_separate_denominator",
+            "type": "u64"
+          },
+          {
+            "name": "trade_fee_numerator",
+            "type": "u64"
+          },
+          {
+            "name": "trade_fee_denominator",
+            "type": "u64"
+          },
+          {
+            "name": "pnl_numerator",
+            "type": "u64"
+          },
+          {
+            "name": "pnl_denominator",
+            "type": "u64"
+          },
+          {
+            "name": "swap_fee_numerator",
+            "type": "u64"
+          },
+          {
+            "name": "swap_fee_denominator",
+            "type": "u64"
+          },
+          {
+            "name": "base_need_take_pnl",
+            "type": "u64"
+          },
+          {
+            "name": "quote_need_take_pnl",
+            "type": "u64"
+          },
+          {
+            "name": "quote_total_pnl",
+            "type": "u64"
+          },
+          {
+            "name": "base_total_pnl",
+            "type": "u64"
+          },
+          {
+            "name": "pool_open_time",
+            "type": "u64"
+          },
+          {
+            "name": "punish_pc_amount",
+            "type": "u64"
+          },
+          {
+            "name": "punish_coin_amount",
+            "type": "u64"
+          },
+          {
+            "name": "orderbook_to_init_time",
+            "type": "u64"
+          },
+          {
+            "name": "swap_base_in_amount",
+            "type": "u128"
+          },
+          {
+            "name": "swap_quote_out_amount",
+            "type": "u128"
+          },
+          {
+            "name": "swap_base2_quote_fee",
+            "type": "u64"
+          },
+          {
+            "name": "swap_quote_in_amount",
+            "type": "u128"
+          },
+          {
+            "name": "swap_base_out_amount",
+            "type": "u128"
+          },
+          {
+            "name": "swap_quote2_base_fee",
+            "type": "u64"
+          },
+          {
+            "name": "base_vault",
+            "type": "pubkey"
+          },
+          {
+            "name": "quote_vault",
+            "type": "pubkey"
+          },
+          {
+            "name": "base_mint",
+            "type": "pubkey"
+          },
+          {
+            "name": "quote_mint",
+            "type": "pubkey"
+          },
+          {
+            "name": "lp_mint",
+            "type": "pubkey"
+          },
+          {
+            "name": "open_orders",
+            "type": "pubkey"
+          },
+          {
+            "name": "market_id",
+            "type": "pubkey"
+          },
+          {
+            "name": "market_program_id",
+            "type": "pubkey"
+          },
+          {
+            "name": "target_orders",
+            "type": "pubkey"
+          },
+          {
+            "name": "withdraw_queue",
+            "type": "pubkey"
+          },
+          {
+            "name": "lp_vault",
+            "type": "pubkey"
+          },
+          {
+            "name": "owner",
+            "type": "pubkey"
+          },
+          {
+            "name": "lp_reserve",
+            "type": "u64"
+          },
+          {
+            "name": "padding",
+            "type": {
+              "array": [
+                "u64",
+                3
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "OpenOrders",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "head",
+            "type": {
+              "array": [
+                "u8",
+                5
+              ]
+            }
+          },
+          {
+            "name": "account_flags",
+            "type": "u64"
+          },
+          {
+            "name": "market",
+            "type": "pubkey"
+          },
+          {
+            "name": "owner",
+            "type": "pubkey"
+          },
+          {
+            "name": "base_token_free",
+            "type": "u64"
+          },
+          {
+            "name": "base_token_total",
+            "type": "u64"
+          },
+          {
+            "name": "quote_token_free",
+            "type": "u64"
+          },
+          {
+            "name": "quote_token_total",
+            "type": "u64"
+          },
+          {
+            "name": "free_slot_bits",
+            "type": "u128"
+          },
+          {
+            "name": "is_bid_bits",
+            "type": "u128"
+          },
+          {
+            "name": "orders",
+            "type": {
+              "array": [
+                "u128",
+                128
+              ]
+            }
+          },
+          {
+            "name": "client_order_ids",
+            "type": {
+              "array": [
+                "u64",
+                128
+              ]
+            }
+          },
+          {
+            "name": "referrer_rebates_accrued",
+            "type": "u64"
+          },
+          {
+            "name": "tail",
+            "type": {
+              "array": [
+                "u8",
+                7
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "MarketState",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "head",
+            "type": {
+              "array": [
+                "u8",
+                5
+              ]
+            }
+          },
+          {
+            "name": "account_flags",
+            "type": "u64"
+          },
+          {
+            "name": "own_address",
+            "type": "pubkey"
+          },
+          {
+            "name": "vault_signer_nonce",
+            "type": "u64"
+          },
+          {
+            "name": "base_mint",
+            "type": "pubkey"
+          },
+          {
+            "name": "quote_mint",
+            "type": "pubkey"
+          },
+          {
+            "name": "base_vault",
+            "type": "pubkey"
+          },
+          {
+            "name": "base_deposits_total",
+            "type": "u64"
+          },
+          {
+            "name": "base_fees_accrued",
+            "type": "u64"
+          },
+          {
+            "name": "quote_vault",
+            "type": "pubkey"
+          },
+          {
+            "name": "quote_deposits_total",
+            "type": "u64"
+          },
+          {
+            "name": "quote_fees_accrued",
+            "type": "u64"
+          },
+          {
+            "name": "quote_dust_threshold",
+            "type": "u64"
+          },
+          {
+            "name": "request_queue",
+            "type": "pubkey"
+          },
+          {
+            "name": "event_queue",
+            "type": "pubkey"
+          },
+          {
+            "name": "bids",
+            "type": "pubkey"
+          },
+          {
+            "name": "asks",
+            "type": "pubkey"
+          },
+          {
+            "name": "base_lot_size",
+            "type": "u64"
+          },
+          {
+            "name": "quote_lot_size",
+            "type": "u64"
+          },
+          {
+            "name": "fee_rate_bps",
+            "type": "u64"
+          },
+          {
+            "name": "referrer_rebates_accrued",
+            "type": "u64"
+          },
+          {
+            "name": "tail",
+            "type": {
+              "array": [
+                "u8",
+                7
+              ]
+            }
+          }
+        ]
+      }
+    }
+  ]
+}
